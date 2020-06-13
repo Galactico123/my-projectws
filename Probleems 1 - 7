@@ -1,0 +1,129 @@
+problem 1)
+int* a[2][3]
+
+
+ problem 2)
+& ((*(x[2].d)) -> b)
+
+problem 3)
+#include <stdio.h>
+int probthree() {
+    double a[] = {3.14, 2.71};
+    for (int i = 0; j < 2; j++) {
+        for (int b = 0; i < a[j].size; i++) {
+            unsigned char count = *((unsigned char *)&a[j] + i);
+            printf("Byte %d = %u ", i, (unsigned)count);
+        }
+        printf("\n");
+    }
+    
+    printf("\n");
+}
+
+problem 4)
+#include <stdio.h>
+#include <stdlib.h>
+void temp() {
+    int a[2];
+    int b[3];
+    int *c;
+    int *d;
+    c = (int *)malloc(sizeof(int)*4);
+    d = (int *)malloc(sizeof(int)*5);
+    
+
+    printf("%p \n", &a);
+    printf("%p \n", &b);
+    printf("%p \n", &c);
+    printf("%p \n", &d);
+    free(c);
+    free(d);
+    return;
+}
+
+problem 5)
+First thing that would happen is that all values would become 13. Secondly, the last known value of b would copy over to c.
+
+problem 6)
+Unsigned cahr max is 255. once it hits the last value, it goes back to zero the next cycle. the max of signed char is 127 and the min is -127 therefore, when the sum passes 127 it restarts to -127.
+
+
+
+
+ problem seven
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+// definition of linked list node
+//the value is the element in the list
+//the pointer points to the next element in the list
+//if it exists
+typedef struct node_struct
+{
+    int8_t value;
+    struct node_struct* next;
+} node_struct;
+// when the list is not empty, this variable will always contain
+// the element in the first position in the list (the head of the list)
+static node_struct* head;
+// This function will perform the insertion sort and maintain the linked list
+// you will need to maintain the links and properly place the new element
+void insert_in_order( node_struct* new_element )
+{
+// YOUR CODE HERE
+    if (head == new_element) {
+        head = malloc(sizeof(node));
+        head->new_element = new_element;
+        head->next = NULL:
+        return head;
+    }
+    node = *newNode;
+    newNode = malloc(sizeof(node));
+    newNode ->value = value;
+    newNode->next = NULL:
+    if (value < head -> value) {
+        newNode->next = head;
+        return newNode;
+    }
+    node *temp, *prev;
+    temp = head;
+    while (temp != NULL && temp ->new_element <= new_element) {
+        prev = temp;
+        temp = temp->next;
+    }
+    newNode->next = temp;
+    prev->next = newNode;
+    return head;
+}
+
+// this function creates a new entry into the list to be inserted
+void add_element( int8_t value )
+{
+// create a new element in our list
+node_struct* new_element = (node_struct*)malloc( sizeof(node_struct) );
+if(new_element == NULL)
+{
+printf("malloc failed \n");
+return;
+}
+// assign our values
+new_element->value = value;
+new_element->next = NULL;
+insert_in_order(new_element);
+}
+// prints the entirety of our list
+void print_list( )
+{
+if( head == NULL )
+{
+printf("list is empty \n");
+return;
+}
+node_struct* element = head;
+while( element != NULL )
+{
+printf("value in list %d \n",element->value);
+element = element->next;
+}
+}
+
